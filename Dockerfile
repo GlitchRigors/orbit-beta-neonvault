@@ -5,6 +5,9 @@ WORKDIR /app
 # Install pnpm
 RUN npm install -g pnpm
 
+# Disable pnpm v9 strict script approval so Next.js binaries can download
+RUN pnpm config set ignore-scripts false
+
 # Copy package management files
 COPY package.json pnpm-lock.yaml* ./
 
